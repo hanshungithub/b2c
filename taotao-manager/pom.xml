@@ -11,12 +11,6 @@
     <packaging>pom</packaging>
     <name>Maven Portlet Archetype</name>
     <url>http://maven.apache.org</url>
-    <modules>
-        <module>taotao-manager-pojo</module>
-        <module>taotao-manager-mapper</module>
-        <module>taotao-manager-service</module>
-        <module>taotao-manager-web</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,6 +23,13 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+    <modules>
+        <module>taotao-manager-pojo</module>
+        <module>taotao-manager-mapper</module>
+        <module>taotao-manager-service</module>
+        <module>taotao-manager-web</module>
+    </modules>
     <build>
         <!-- 配置插件 -->
         <plugins>
