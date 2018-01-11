@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -34,5 +35,12 @@ public class ItemParamServiceImpl implements ItemParamService {
             return TaotaoResult.ok(tbItemParamItems.get(0));
         }
         return TaotaoResult.ok();
+    }
+
+    @Override
+    public TaotaoResult insertItemParam(TbItemParam itemParam) {
+        itemParam.setCreated(new Date());
+        itemParam.setUpdated(new Date());
+        return TaotaoResult.ok(paramMapper.insert(itemParam));
     }
 }
