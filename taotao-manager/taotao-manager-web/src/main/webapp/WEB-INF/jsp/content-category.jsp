@@ -44,6 +44,7 @@ $(function(){
 	});
 });
 function menuHandler(item){
+    debugger
 	var tree = $("#contentCategory");
 	var node = tree.tree("getSelected");
 	if(item.name === "add"){
