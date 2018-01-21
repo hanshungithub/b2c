@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -31,5 +32,11 @@ public class ContentController {
             log.error("查询失败-->{}" + e);
             return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
         }
+    }
+
+    @RequestMapping(value = "/httpclient/post", method = RequestMethod.POST)
+    @ResponseBody
+    public TaotaoResult testPost() {
+        return TaotaoResult.ok();
     }
 }
