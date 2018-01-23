@@ -51,7 +51,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>taotao-portal</servlet-name>
-    <!-- 伪静态化 -->
+    <!-- 伪静态化（出现406可能是后缀不对） -->
     <url-pattern>*.action</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,6 +1,8 @@
 package com.taotao.controller;
 
 import com.taotao.common.pojo.EUDataGridResult;
+import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.pojo.TbContent;
 import com.taotao.service.ContentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +22,12 @@ public class ContentController {
     @ResponseBody
     public EUDataGridResult getContentList(int page,int rows,Long categoryId) {
         return contentService.getContetList(page,rows,categoryId);
+    }
+
+    @RequestMapping("/save")
+    @ResponseBody
+    public TaotaoResult insertContent(TbContent content) {
+        TaotaoResult result = contentService.insertContent(content);
+        return result;
     }
 }
