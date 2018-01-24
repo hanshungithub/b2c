@@ -13,11 +13,46 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.io.IOException;
 
 @Slf4j
 public class ServiceTest {
+
+    /**
+     * 单机版测试
+     * <p>Title: testSpringJedisSingle</p>
+     * <p>Description: </p>
+     */
+    @Test
+    public void testSpringJedisSingle() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        JedisPool pool = (JedisPool) applicationContext.getBean("redisClient");
+        Jedis jedis = pool.getResource();
+        String string = jedis.get("key1");
+        System.out.println(string);
+        jedis.close();
+        pool.close();
+    }
+
+    /**
+     * jedis测试
+     *
+     * @throws Exception
+     */
+    @Test
+    public void jedisTest() {
+        //创建jedis对象
+        Jedis jedis = new Jedis("192.168.48.128",6379);
+        jedis.set("key1", "hassan");
+        String s = jedis.get("key1");
+        System.out.println(s);
+        jedis.close();
+    }
 
     @Test
     public void doGet() throws Exception {

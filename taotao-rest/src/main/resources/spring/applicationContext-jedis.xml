@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!--jedis单机版-->
+	<bean id="redisClient" class="redis.clients.jedis.JedisPool">
+		<constructor-arg name="host" value="${REDIS_BASE_URL}"/>
+		<constructor-arg name="port" value="${REDIS_BASE_PORT}"/>
+	</bean>
+
+	<bean id="jedisClientSingle" class="cn.hassan.rest.service.redisImpl.RedisSingleClient"/>
+</beans>
